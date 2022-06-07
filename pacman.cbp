@@ -33,12 +33,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Main.cpp" />
 		<Unit filename="assets/map/pill.png" />
 		<Unit filename="assets/map/wall.png" />
 		<Unit filename="data/map/classic.map" />
-		<Unit filename="include/Map.h" />
-		<Unit filename="src/Map.cpp" />
+		<Unit filename="include/map.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/map.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
