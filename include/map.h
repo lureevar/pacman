@@ -6,24 +6,30 @@
 
 #include <allegro5/allegro5.h>
 
-typedef enum
-{
-    PILL,
-    WALL,
-    SUPER_PILL,
+typedef enum {
+	PILL,
+	WALL,
+	SUPER_PILL,
 } maps_objects_e;
 
-class Map
-{
-public:
-    Map(const char *);
-    ~Map(void);
+class Map {
+	public:
+		Map(const char *);
+		~Map(void);
 
-    void draw(ALLEGRO_BITMAP *, ALLEGRO_BITMAP *, ALLEGRO_BITMAP *);
+		void setScene(int **);
+		void setPills(int);
+
+		int **getScene(void);
+		int getPills(void);
+
+		Map &operator=(const Map &);
+
+		void draw(ALLEGRO_BITMAP *, ALLEGRO_BITMAP *, ALLEGRO_BITMAP *);
 
 private:
-    int **scene;
-    int pills = 0;
+	int **scene;
+	int pills = 0;
 };
 
 #endif // MAP_H
