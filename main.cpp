@@ -4,7 +4,7 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_image.h>
 
-#include "include/map.h"
+#include "include/map.hpp"
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 640
@@ -42,8 +42,9 @@ int main() {
 	ALLEGRO_BITMAP *wall = al_load_bitmap("assets/map/wall.png");
 	ALLEGRO_BITMAP *pill = al_load_bitmap("assets/map/pill.png");
 	ALLEGRO_BITMAP *super_pill = al_load_bitmap("assets/map/super_pill.png");
+	ALLEGRO_BITMAP *nothing = al_load_bitmap("assets/map/nothing.png");
 
-	Map esqueme = Map("data/map/classic.map");
+	Map esqueme = Map(wall, pill, super_pill, nothing);
 
 	ALLEGRO_EVENT event;
 
@@ -63,9 +64,7 @@ int main() {
 		if (done) break;
 
 		if (redraw && al_is_event_queue_empty(event_queue)) {
-			al_draw_bitmap(wall, 0, 0, 0);
-			al_draw_bitmap(pill, 20, 20, 0);
-			esqueme.draw(wall, pill, super_pill);
+			esqueme.draw_scene();
 			al_flip_display();
 			redraw = false;
 		}
@@ -74,6 +73,7 @@ int main() {
 	al_destroy_bitmap(wall);
 	al_destroy_bitmap(pill);
 	al_destroy_bitmap(super_pill);
+	al_destroy_bitmap(nothing);
 	al_destroy_timer(time);
 	al_destroy_event_queue(event_queue);
 	al_destroy_display(display);
